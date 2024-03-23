@@ -47,3 +47,15 @@ do read => https://reactnative.dev/docs/native-modules-android important
 after install packages do android ./gradlew clean
 
 npx react-native run-android
+
+---
+
+assets and fonts are linked by
+
+npx react-native-asset
+
+info Linking ttf assets to iOS project
+WARN ERRGROUP Group 'Resources' does not exist in your Xcode project. We have created it automatically for you.
+info Linking custom assets to iOS project
+info Linking ttf assets to Android project
+info Linking png assets to Android project
