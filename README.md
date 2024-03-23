@@ -41,3 +41,9 @@ andriod native dev IDE - android studio
 IOS native dev IDE - Xcode
 
 do read => https://reactnative.dev/docs/native-modules-android important
+
+---
+
+after install packages do android ./gradlew clean
+
+npx react-native run-android
