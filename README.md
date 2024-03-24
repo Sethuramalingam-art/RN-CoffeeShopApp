@@ -59,3 +59,5 @@ WARN ERRGROUP Group 'Resources' does not exist in your Xcode project. We have cr
 info Linking custom assets to iOS project
 info Linking ttf assets to Android project
 info Linking png assets to Android project
+
+1:00:16
