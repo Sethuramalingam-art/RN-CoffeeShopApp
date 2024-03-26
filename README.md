@@ -60,4 +60,4 @@ info Linking custom assets to iOS project
 info Linking ttf assets to Android project
 info Linking png assets to Android project
 
-1:00:16
+1:30:16
