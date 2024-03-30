@@ -1,4 +1,5 @@
 import {
+  FlatList,
   ScrollView,
   StatusBar,
   StyleSheet,
@@ -136,6 +137,20 @@ const HomeScreen = () => {
             );
           })}
         </ScrollView>
+
+        {/* {Coffee Flatlist} */}
+
+        <FlatList
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          data={sortedCoffee}
+          contentContainerStyle={styles.FlatListContainer}
+          keyExtractor={item => item.id}
+          renderItem={({item}) => {
+            return <TouchableOpacity></TouchableOpacity>;
+          }}
+        />
+        {/* { Beans Flatlist} */}
       </ScrollView>
     </View>
   );
