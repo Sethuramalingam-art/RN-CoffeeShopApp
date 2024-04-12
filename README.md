@@ -61,3 +61,7 @@ info Linking ttf assets to Android project
 info Linking png assets to Android project
 
 1:30:16
+2:00
+2:30
+2:40
+2:49

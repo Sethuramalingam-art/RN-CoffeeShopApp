@@ -22,6 +22,7 @@ import {
 import HeaderBar from '../components/HeaderBar';
 import CustomIcon from '../components/CustomIcon';
 import CoffeeCard from '../components/CoffeeCard';
+import {Dimensions} from 'react-native';
 
 const getCategoriesFromData = (data: any) => {
   let temp: any = {};
@@ -69,8 +70,22 @@ const HomeScreen = () => {
         offser: 0,
       });
       setCategoryIndex({index: 0, category: categories[0]});
-      setSortedCoffee([...coffeeList.filter]);
+      setSortedCoffee([
+        ...coffeeList.filter((item: any) =>
+          item.name.toLowerCase().includes(search.toLowerCase()),
+        ),
+      ]);
     }
+  };
+
+  const resetSearchCoffee = () => {
+    listRef?.current?.scrollToOffset({
+      animated: true,
+      offser: 0,
+    });
+    setCategoryIndex({index: 0, category: categories[0]});
+    setSortedCoffee([...coffeeList]);
+    setSearchText('');
   };
   return (
     <View style={styles.ScreenContainer}>
@@ -86,7 +101,10 @@ const HomeScreen = () => {
 
         {/* { Search Input } */}
         <View style={styles.InputContainerComponent}>
-          <TouchableOpacity onPress={() => {}}>
+          <TouchableOpacity
+            onPress={() => {
+              searchCoffee(searchText);
+            }}>
             <CustomIcon
               style={styles.InputIcon}
               name="search"
@@ -102,13 +120,19 @@ const HomeScreen = () => {
           <TextInput
             placeholder="Find your Coffee.."
             value={searchText}
-            onChangeText={text => setSearchText(text)}
+            onChangeText={text => {
+              setSearchText(text);
+              searchCoffee(text);
+            }}
             placeholderTextColor={COLORS.primaryLightGreyHex}
             style={styles.TextInputContainer}></TextInput>
         </View>
 
         {searchText.length > 0 ? (
-          <TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => {
+              resetSearchCoffee();
+            }}>
             <CustomIcon
               name="close"
               style={styles.InputIcon}
@@ -171,6 +195,11 @@ const HomeScreen = () => {
 
         <FlatList
           ref={listRef}
+          ListEmptyComponent={
+            <View style={styles.EmptyListContainer}>
+              <Text style={styles.CategoryText}>No Coffee Available</Text>
+            </View>
+          }
           horizontal
           showsHorizontalScrollIndicator={false}
           data={sortedCoffee}
@@ -253,6 +282,9 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.primaryDarkGreyHex,
     alignItems: 'center',
   },
+  InputIcon: {
+    marginHorizontal: SPACING.space_20,
+  },
   TextInputContainer: {
     flex: 1,
     height: SPACING.space_20 * 3,
@@ -260,21 +292,12 @@ const styles = StyleSheet.create({
     fontSize: FONTSIZE.size_14,
     color: COLORS.primaryWhiteHex,
   },
-  InputIcon: {
-    marginHorizontal: SPACING.space_20, //The horizontal margin between the edge of the object and its contents
-  },
   CategoryScrollViewStyle: {
     paddingHorizontal: SPACING.space_20,
     marginBottom: SPACING.space_20,
   },
   CategoryScrollViewContainer: {
     paddingHorizontal: SPACING.space_15,
-  },
-  ActiveCategory: {
-    height: SPACING.space_10,
-    width: SPACING.space_10,
-    borderRadius: BORDERRADIUS.radius_10,
-    backgroundColor: COLORS.primaryOrangeHex,
   },
   CategoryScrollViewItem: {
     alignItems: 'center',
@@ -285,10 +308,22 @@ const styles = StyleSheet.create({
     color: COLORS.primaryLightGreyHex,
     marginBottom: SPACING.space_4,
   },
+  ActiveCategory: {
+    height: SPACING.space_10,
+    width: SPACING.space_10,
+    borderRadius: BORDERRADIUS.radius_10,
+    backgroundColor: COLORS.primaryOrangeHex,
+  },
   FlatListContainer: {
     gap: SPACING.space_20,
-    paddingHorizontal: SPACING.space_20,
-    paddingVertical: SPACING.space_30,
+    paddingVertical: SPACING.space_20,
+    paddingHorizontal: SPACING.space_30,
+  },
+  EmptyListContainer: {
+    width: Dimensions.get('window').width - SPACING.space_30 * 2,
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: SPACING.space_36 * 3.6,
   },
   CoffeeBeansTitle: {
     fontSize: FONTSIZE.size_18,
