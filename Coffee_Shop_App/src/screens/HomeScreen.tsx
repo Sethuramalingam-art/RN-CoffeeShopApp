@@ -44,7 +44,7 @@ const getCoffeeList = (category: string, data: any) => {
   }
 };
 
-const HomeScreen = () => {
+const HomeScreen = ({navigation}: any) => {
   const coffeeList = useStore((state: any) => state.CoffeeList);
   const beansList = useStore((state: any) => state.BeansList);
 
@@ -126,23 +126,22 @@ const HomeScreen = () => {
             }}
             placeholderTextColor={COLORS.primaryLightGreyHex}
             style={styles.TextInputContainer}></TextInput>
+          {searchText.length > 0 ? (
+            <TouchableOpacity
+              onPress={() => {
+                resetSearchCoffee();
+              }}>
+              <CustomIcon
+                name="close"
+                style={styles.InputIcon}
+                size={FONTSIZE.size_16}
+                color={COLORS.primaryLightGreyHex}
+              />
+            </TouchableOpacity>
+          ) : (
+            <></>
+          )}
         </View>
-
-        {searchText.length > 0 ? (
-          <TouchableOpacity
-            onPress={() => {
-              resetSearchCoffee();
-            }}>
-            <CustomIcon
-              name="close"
-              style={styles.InputIcon}
-              size={FONTSIZE.size_16}
-              color={COLORS.primaryLightGreyHex}
-            />
-          </TouchableOpacity>
-        ) : (
-          <></>
-        )}
 
         {/* { Category Scroller} */}
         <ScrollView
@@ -207,7 +206,10 @@ const HomeScreen = () => {
           keyExtractor={item => item.id}
           renderItem={({item}) => {
             return (
-              <TouchableOpacity onPress={() => {}}>
+              <TouchableOpacity
+                onPress={() => {
+                  navigation.push('Details');
+                }}>
                 <CoffeeCard
                   id={item.id}
                   index={item.index}
@@ -239,7 +241,10 @@ const HomeScreen = () => {
           keyExtractor={item => item.id}
           renderItem={({item}) => {
             return (
-              <TouchableOpacity onPress={() => {}}>
+              <TouchableOpacity
+                onPress={() => {
+                  navigation.push('Details');
+                }}>
                 <CoffeeCard
                   id={item.id}
                   index={item.index}
