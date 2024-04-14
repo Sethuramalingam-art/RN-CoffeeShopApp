@@ -66,3 +66,5 @@ info Linking png assets to Android project
 2:40
 2:49
 4:11
+
+https://blog.bitsrc.io/touchablehighlight-vs-touchablenativefeedback-vs-touchableopacity-vs-touchablewithoutfeedback-in-d5520a3c3e67
