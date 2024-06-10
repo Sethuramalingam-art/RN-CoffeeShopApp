@@ -8,6 +8,7 @@ import {
   Touchable,
   TouchableOpacity,
   View,
+  ToastAndroid,
 } from 'react-native';
 import React, {useRef, useState} from 'react';
 import {useStore} from '../store/store';
@@ -48,6 +49,9 @@ const HomeScreen = ({navigation}: any) => {
   const coffeeList = useStore((state: any) => state.CoffeeList);
   const beansList = useStore((state: any) => state.BeansList);
 
+  const addToCart = useStore((state: any) => state.addToCart);
+  const calculateCartPrice = useStore((state: any) => state.calculateCartPrice);
+
   const [categories, setCategories] = useState(
     getCategoriesFromData(coffeeList),
   );
@@ -87,6 +91,35 @@ const HomeScreen = ({navigation}: any) => {
     setSortedCoffee([...coffeeList]);
     setSearchText('');
   };
+
+  const CoffeCardAddToCart = ({
+    id,
+    index,
+    name,
+    roasted,
+    imagelink_square,
+    special_ingredient,
+    type,
+    prices,
+  }: any) => {
+    addToCart({
+      id,
+      index,
+      name,
+      roasted,
+      imagelink_square,
+      special_ingredient,
+      type,
+      prices,
+    });
+    calculateCartPrice();
+    ToastAndroid.showWithGravity(
+      `${name} is Added to Cart`,
+      ToastAndroid.SHORT,
+      ToastAndroid.CENTER,
+    );
+  };
+
   return (
     <View style={styles.ScreenContainer}>
       <StatusBar backgroundColor={COLORS.primaryBlackHex} />

@@ -143,12 +143,22 @@ const DetailsScreen = ({navigation, route}: any) => {
           ))}
         </View>
       </View>
-      <PaymentFooter price={price} buttonPressHandler={()=>{
-        addToCarthandler({
-          id:ItemOfIndex.id,
-          index:
-        })
-      }} buttonTitle="Add to Cart"/>
+      <PaymentFooter
+        price={price}
+        buttonPressHandler={() => {
+          addToCarthandler({
+            id: ItemOfIndex.id,
+            index: ItemOfIndex.index,
+            name: ItemOfIndex.name,
+            roasted: ItemOfIndex.roasted,
+            imagelink_square: ItemOfIndex.imagelink_square,
+            special_ingredient: ItemOfIndex.special_ingredient,
+            type: ItemOfIndex.type,
+            price: price,
+          });
+        }}
+        buttonTitle="Add to Cart"
+      />
     </View>
   );
 };

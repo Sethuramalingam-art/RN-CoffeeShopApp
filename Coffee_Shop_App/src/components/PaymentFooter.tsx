@@ -46,8 +46,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    gap: SPACING.space_20,
-    padding: SPACING.space_20,
+    gap: SPACING.space_30,
+    padding: SPACING.space_30,
   },
   PriceContainer: {
     alignItems: 'center',
