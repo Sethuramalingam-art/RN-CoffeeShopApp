@@ -12,6 +12,8 @@ import {useBottomTabBarHeight} from '@react-navigation/bottom-tabs';
 import {COLORS, SPACING} from '../theme/theme';
 import HeaderBar from '../components/HeaderBar';
 import PaymentFooter from '../components/PaymentFooter';
+import EmptyListAnimation from '../components/EmptyListAnimation';
+import CartItem from '../components/CartItem.tsx';
 
 const CartScreen = ({navigation, route}: any) => {
   const CartList = useStore((state: any) => state.CartList);

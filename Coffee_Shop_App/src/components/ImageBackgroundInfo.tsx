@@ -27,7 +27,7 @@ interface ImageBackgroundInfoProps {
   special_ingredient: string;
   ingredients: string;
   average_rating: number;
-  ratings_count: number;
+  ratings_count: string;
   roasted: string;
   BackHandler?: any;
   ToggleFavourite: any;
