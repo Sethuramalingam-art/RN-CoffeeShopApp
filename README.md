@@ -1,5 +1,7 @@
 # RN-CoffeeShopApp
 
+React Native uses Metro to build your JavaScript code and assets.
+
 npx react-native init Coffee_Shop_App => create an react native app
 
 zustand => state managment library
