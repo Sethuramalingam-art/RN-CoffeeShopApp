@@ -9,6 +9,9 @@ immer => update the state data's in deeply
 npm i immer
 
 react-native-async-storage=> helps us to store the data locally on the device and same data can be used by store to update the store items
+
+=> when you add the item in carts and closed the app and again open the app without any redux or zustand add item is there
+in cart which is aceived by react-native-async-storage
 npm i @react-native-async-storage/async-storage
 
 react navigation
@@ -46,7 +49,17 @@ do read => https://reactnative.dev/docs/native-modules-android important
 
 after install packages do android ./gradlew clean
 
-npx react-native run-android
+npx react-native run-android or run inside android folder ./gradle initialRelease
+
+App icon generator in google generate the app icon and
+Icon kitchen is for icon edit
+
+include splash for app launch first screen
+npm i react-natice-splash-screen
+and changes are done in main activity.kt file
+
+check launch_screen.xml for app icon and splash screen customization
+app generator icons are there inside andriod-src-main-res-mipmap
 
 ---
 
